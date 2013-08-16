@@ -16,34 +16,34 @@ class Backbone.CheckboxListView extends Backbone.View
   events:
     'click .btn': 'selectToggle'
 
-  dictionary:    
-    selectAll: 
+  dictionary:
+    selectAll:
       en: 'Select All'
       cn: '全選'
-    deSelectAll: 
+    deSelectAll:
       en: 'Cancel All'
       cn: '取消'
 
   initialize: =>
-    @options = _.defaults @options, @defaults  
+    @options = _.defaults @options, @defaults
     @selectAll = @options.selectAll
     @listenTo @collection, 'reset sync', @renderCheckbox
     @render()
     this
-    
+
   render: =>
     @$el.html @template
       toggleButton: if @options.selectAll
         @dictionary.deSelectAll[@options.lang]
-      else 
-        @dictionary.selectAll[@options.lang]      
+      else
+        @dictionary.selectAll[@options.lang]
     @renderCheckbox()
-    
+
   renderCheckbox: =>
     $div = @$el.find('.form-checkbox-list')
     $div.empty()
-    @collection.each (model) =>      
-      checkboxItemView = new CheckboxItemView
+    @collection.each (model) =>
+      checkboxItemView = new Backbone.CheckboxItemView
         model: model
         name: @options.name
         text: @options.text
@@ -52,7 +52,7 @@ class Backbone.CheckboxListView extends Backbone.View
         checkedStyle: @options.checkedStyle
         selected: _.include(@options.defaultValue, model.get(@options.value)) || @options.selectAll
       $div.append checkboxItemView.render().el
-      
+
   selectToggle: (e) =>
     e.preventDefault()
     $targetInput = $(e.currentTarget.parentElement).find('input:checkbox')
@@ -66,4 +66,4 @@ class Backbone.CheckboxListView extends Backbone.View
       $targetInput.removeAttr "checked"
       $targetLabel.removeClass @options.checkedStyle
       $(e.currentTarget).find('> font ').html('Select All')
-  
+

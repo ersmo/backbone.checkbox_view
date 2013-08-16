@@ -161,7 +161,7 @@ var locals_ = (locals || {}),toggleButton = locals_.toggleButton;buf.push("<a cl
       $div.empty();
       return this.collection.each(function(model) {
         var checkboxItemView;
-        checkboxItemView = new CheckboxItemView({
+        checkboxItemView = new Backbone.CheckboxItemView({
           model: model,
           name: _this.options.name,
           text: _this.options.text,
