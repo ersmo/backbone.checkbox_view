@@ -1,0 +1,15 @@
+{
+  "name": "backbone.checkbox_view",
+  "version": "0.0.0",
+  "main": "dist/backbone.checkbox_view.js",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "backbone": "~1.0.0"
+  }
+}
