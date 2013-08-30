@@ -2,7 +2,11 @@ this["JST"] = this["JST"] || {};
 
 this["JST"]["checkboxItem"] = function anonymous(locals) {
 var buf = [];
-var locals_ = (locals || {}),name = locals_.name,value = locals_.value,checked = locals_.checked,text = locals_.text;buf.push("<input" + (jade.attrs({ 'type':("checkbox"), 'name':("" + (name) + "[]"), 'value':(value), 'checked':(checked) }, {"type":true,"name":true,"value":true,"checked":true})) + "/>" + (null == (jade.interp = text) ? "" : jade.interp));;return buf.join("");
+var locals_ = (locals || {}),isSingle = locals_.isSingle,name = locals_.name,value = locals_.value,checked = locals_.checked,text = locals_.text;if (!( isSingle))
+{
+name = name + "[]"
+}
+buf.push("<input" + (jade.attrs({ 'type':("checkbox"), 'name':(name), 'value':(value), 'checked':(checked) }, {"type":true,"name":true,"value":true,"checked":true})) + "/>" + (null == (jade.interp = text) ? "" : jade.interp));;return buf.join("");
 };
 (function() {
   var _ref,
@@ -30,6 +34,7 @@ var locals_ = (locals || {}),name = locals_.name,value = locals_.value,checked =
       value: null,
       selected: false,
       inline: false,
+      isSingle: false,
       checkedStyle: 'input-checked-green'
     };
 
@@ -62,7 +67,8 @@ var locals_ = (locals || {}),name = locals_.name,value = locals_.value,checked =
         name: _.isFunction(this.options.name) ? this.options.name(this.model) : this.options.name,
         text: _.isFunction(this.options.text) ? this.options.text(this.model) : this.model.get(this.options.text),
         value: _.isFunction(this.options.value) ? this.options.value(this.model) : this.model.get(this.options.value),
-        checked: this.options.selected
+        checked: this.options.selected,
+        isSingle: this.options.isSingle
       }));
       this.$input = this.$el.find('input');
       return this;

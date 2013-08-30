@@ -1,2 +1,4 @@
-input(type="checkbox",name="#{name}[]", value=value, checked=checked)
+unless isSingle
+  - name = name + "[]"
+input(type="checkbox",name=name, value=value, checked=checked)
 != text

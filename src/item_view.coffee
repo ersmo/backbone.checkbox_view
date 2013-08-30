@@ -9,6 +9,7 @@ class Backbone.CheckboxItemView extends Backbone.View
     value: null
     selected: false
     inline: false
+    isSingle: false
     checkedStyle: 'input-checked-green'
 
   tagName: 'label'
@@ -33,6 +34,7 @@ class Backbone.CheckboxItemView extends Backbone.View
       text: if _.isFunction @options.text then @options.text(@model) else @model.get(@options.text)
       value: if _.isFunction @options.value then @options.value(@model) else @model.get(@options.value)
       checked: @options.selected
+      isSingle: @options.isSingle
     @$input = @$el.find('input')
     this
 

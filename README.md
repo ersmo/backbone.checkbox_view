@@ -58,6 +58,7 @@ defaults:
   value: null
   selected: false
   inline: false
+  isSingle: false
 ```
 
 ## License
